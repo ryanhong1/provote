@@ -39,9 +39,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-PROJECT_APPS = ['posts.apps.PostsConfig'
+PROJECT_APPS = ['posts.apps.PostsConfig', 'users.apps.UsersConfig']
 
-]
+
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
@@ -125,3 +125,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = "users.User"
