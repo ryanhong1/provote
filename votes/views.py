@@ -1,8 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import models
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
-def VotesView(request): 
-    all_votes = models.Question.objects.all()
-    return render(request, "indexx.html", {"all_votes":all_votes})
+
+
+class votesView(ListView):
+
+    """ HomeView Definition """
+
+    model = models.Question
+    paginate_by = 10
+    paginate_orphans = 0
+    ordering = "pub_date"
+    context_object_name = "questions"
+
+class votesDetailView(DetailView):
+    model = models.Question
+    
+
