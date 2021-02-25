@@ -1,4 +1,5 @@
 from django.db import models
+from  votes import models as votes_models
 from django.utils import timezone
 
 class Photo(models.Model):
@@ -20,6 +21,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
     video_url = models.URLField(blank=True)
     description = models.TextField(blank=True, null=True)
+    vote = models.ForeignKey(votes_models.Question, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title
