@@ -15,4 +15,4 @@ class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.choice_text
+        return self.choice_text     
