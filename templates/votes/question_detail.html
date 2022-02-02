@@ -23,6 +23,12 @@
   <link rel="stylesheet" href="../../static/css/bootstrap.css">
 
   <link rel="stylesheet" href="../../static/css/mobster.css">
+
+  
+
+  
+
+  
 </head>
 <body>
 
@@ -87,7 +93,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 py-3">
-          <article class="blog-entry">
+          <article class="blog-entry" >
             <div class="entry-header">
               <div class="post-thumbnail">
                 <img src="../../static/0e21529xdww3tzf13380.jpg" alt="">
@@ -108,11 +114,30 @@
             <div class="entry-content">
               <p>{{question.description}}</p>
             </div>
-            {% for post in question.post_set.all %}
+            
                 
-                <a href="{% url 'posts:detail' post.pk %}"> {{post.title}}  </a>
+                <div class= "card-page mt-3" >
+                  {% for post in question.post_set.all %}
+                  <a href="{% url 'posts:detail' post.pk %}"> {{post.title}} <wktpglqhrl></wktpglqhrl></a>
+              
+                  <p></p>
+                  <p id="confirmMemo"></p>
+                  {% endfor %}
+                </div>
+                <br>
 
-            {% endfor %}
+            
+            
+            <form>
+              {% for post in question.post_set.all %} 
+              
+              <input type="radio" name="a" value="{{post.pk}}"> 
+              <label> {{post.title}} </label> 
+              <br>
+              {% endfor %}
+              <input type="submit" value="투표하기">
+            </form>
+            
           </article>
           
         </div>
@@ -266,6 +291,23 @@
 <script src="../../static/vendor/wow/wow.min.js"></script>
 
 <script src="../../static/js/mobster.js"></script>
+
+<script>
+  function simpleAlert() {
+    alert("Hello! I am a simple alert box!");
+  }
+
+  function confirmAlert() {
+    var txt;
+    var r = confirm("정말 이 후보에게 투표하시겠습니까?");
+    if (r == true) {
+      txt = "확인되었습니다.";
+    } else {
+      txt = "취소되었습니다.";
+    }
+    document.getElementById("confirmMemo").innerHTML = txt;
+  }
+</script>
 
 </body>
 </html>
